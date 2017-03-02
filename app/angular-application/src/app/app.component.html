@@ -1,14 +1,20 @@
-<md-grid-list cols="6" rowHeight="275" gutterSize="10">
-  <md-grid-tile *ngFor="let employee of employees" [colspan]="2" [rowspan]="2">
-    <md-card class="example-card">
-      <md-card-header>
-        <md-card-title>{{employee.name}}</md-card-title>
-        <md-card-subtitle>{{employee.position}}</md-card-subtitle>
-      </md-card-header>
-      <img md-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-      <md-card-actions>
-        <button md-fab><md-icon>notifications_active</md-icon></button>
-      </md-card-actions>
-    </md-card>
-  </md-grid-tile>
-</md-grid-list>
+<div class="parent" (click)="deSelect()">
+  <div class="contain">
+    <h1>Angular - Electron - Resin</h1>
+    <input type="text">
+    <div class="row">
+      <div class="row__inner" [class.selected]="selectedEmployeeId > 0">
+        <div class="tile" *ngFor="let employee of employees" [class.selected]="employee.id === selectedEmployeeId" (click)="selectEmployee(employee,$event)">
+          <div class="tile__media">
+            <img class="tile__img" [src]="employee.profilePictureUrl" alt="" />
+          </div>
+          <div class="tile__details">
+            <div class="tile__title">
+              {{employee.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
